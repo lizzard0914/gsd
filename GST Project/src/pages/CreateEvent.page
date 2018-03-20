@@ -1,0 +1,20 @@
+<apex:page standardController="Event" extensions="macalendarentry" showheader="false" sidebar="false" lightningStylesheets="True">
+    <apex:messages id="msg"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <apex:form >
+        <apex:pageblock title="Create Appointment" mode="edit">
+                 <apex:pageBlockButtons location="top">
+                 <apex:commandButton action="{!save}" value="Save" rendered="{!if(flag==true,true,false)}"/>
+                 <apex:commandButton action="{!checkEvent}" value="Save" rendered="{!if(flag==true,false,true)}"/>
+                 </apex:pageBlockButtons>
+                    <apex:pageBlockSection title="Calendar Details" columns="4" >
+                        <apex:inputfield value="{!Event.Type}" >
+                        </apex:inputfield>
+                        <apex:inputfield value="{!Event.StartDateTime}" >
+                        </apex:inputfield>
+                        <apex:inputfield value="{!Event.EndDateTime}"  styleclass="sdate" >
+                        </apex:inputfield>
+                    </apex:pageBlockSection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

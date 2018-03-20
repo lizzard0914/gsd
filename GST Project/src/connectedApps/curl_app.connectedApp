@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>mshepard@lizztech.com</contactEmail>
+    <label>curl_app</label>
+    <oauthConfig>
+        <callbackUrl>https://</callbackUrl>
+        <consumerKey>3MVG9mclR62wycM3Ug765vmkhwC9q2SYhytyE392fw6rMtznFm2OWUixWMnmh8x7YyecLR4CyoyQBjGIE50ue</consumerKey>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>Full</scopes>
+        <scopes>Chatter</scopes>
+        <scopes>CustomApplications</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>OpenID</scopes>
+        <scopes>CustomPermissions</scopes>
+        <scopes>Wave</scopes>
+        <scopes>Eclair</scopes>
+    </oauthConfig>
+</ConnectedApp>

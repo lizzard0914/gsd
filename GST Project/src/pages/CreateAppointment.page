@@ -1,0 +1,109 @@
+<apex:page showHeader="false" sidebar="false" applyBodyTag="false" applyHtmlTag="false" standardStylesheets="false" controller="CreateAppointmentController" lightningStylesheets="True">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+     
+          $(document).click(function (event) {
+          if($(event.target).is("b")){
+          
+          var eventTimeFromList = $(event.target).text();
+    var eventDateFromHeader = $(".page-header > h3").text();
+    
+    
+   
+    var dateAndTimeString = eventDateFromHeader+","+eventTimeFromList;
+    var dateAndTime = new Date(dateAndTimeString);
+    console.log(">>>>>>>>>>>>>>"+dateAndTime);
+    
+    var StartTime = (dateAndTime.getMonth() + 1) + '/' + dateAndTime.getDate() + '/' +  dateAndTime.getFullYear();
+    
+    var ownerid=$("#OwnId").text();
+    var Lead_id=$("#ld_Id").text();
+    var Lead_City=$("#City").text();
+     
+   
+     window.location = '/apex/CreateEvent?ownerID='+ownerid+'&&whatid='+Lead_id+'&&StartDate='+StartTime+'&&StartTime='+eventTimeFromList+'&&LeadCity='+Lead_City;
+          
+          }
+    
+});
+      </script>
+ <script>
+ 
+ </script>
+ 
+ 
+ <style>
+       .info{
+        border: 1px solid #000000;
+    }
+</style>    
+    <apex:form >
+      
+       <fieldset>
+  <legend>Create New Appointment</legend>   
+ 
+    <table id="EmployeeDetails" cellpadding="3%" width="100%" class="info">
+    <apex:repeat value="{!LeadList}" var="e" id="theRepeat">
+    <tr>
+        <th colspan="6">Customer Information :</th>
+    </tr>
+    <tr>
+        <th id="ld_Id" style="display: none">{!e.id}</th>
+        <th>First Name :</th>
+        <td>{!e.FirstName}</td>
+        <th colspan="3">Last Name :</th>
+        <td>{!e.LastName}</td>
+        <td id="City" style="display: none">{!e.city}</td>
+        
+    </tr>
+    <tr>
+        <th>Street Address :</th>
+        <td colspan="5">{!e.Street}</td>
+        
+    </tr>
+    <tr>
+        <th>City :</th>
+        <td >{!e.City}</td>
+         <th>State :</th>
+        <td >{!e.State}</td>
+         <th>ZipCode :</th>
+        <td >{!e.PostalCode}</td>
+        
+    </tr>
+     </apex:repeat>
+</table>
+</fieldset>
+</apex:form>
+
+<br/>
+<apex:form >
+ <table id="EmployeeDetails" cellpadding="3%" width="100%" class="info">
+    <apex:repeat value="{!LeadList}" var="e">
+    <tr>
+        <th colspan="4">Lead Owner :</th>
+    </tr>
+    <tr>
+        <th>First Name :</th>
+        <td id="OwnId" style="display: none">{!e.Owner.id}</td>
+        <td>{!e.Owner.Firstname}</td>
+        <th>Last Name :</th>
+        <td >{!e.owner.lastname}</td>
+    </tr>
+    <tr>
+        <th>Email :</th>
+        <td >{!e.owner.Email}</td>
+         <th>Phone :</th>
+        <td >{!e.owner.phone}</td>
+        
+    </tr>
+    
+     </apex:repeat>
+</table>
+
+<br/>
+ 
+      
+
+    </apex:form>
+    <c:Responsive_Calendar_View />
+</apex:page>
